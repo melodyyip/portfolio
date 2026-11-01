@@ -62,6 +62,62 @@
     .story-prompts span{font-size:11px;color:#68645e;background:#fff;border:1px solid #ebe8e2;border-radius:100px;padding:9px 12px}
     @media(max-width:850px){.approach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.principle[open]{grid-column:1/-1}.principle-story{gap:25px}}
     @media(max-width:600px){.approach-grid{grid-template-columns:1fr}.principle,.principle[open]{grid-column:1}.principle summary{min-height:0;padding:25px}.principle-main{padding-top:25px}.principle[open] summary{padding:25px}.principle-story{grid-template-columns:1fr;padding:27px 24px;gap:25px}.story-placeholder{padding:22px}.approach-intro{font-size:14px}}
+
+    /* Selected Work: uniform cards that expand directly downward. */
+    .cards{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+    .cards>.card,.cards>.card:nth-child(n+4),.cards>.card[open]{grid-column:auto;align-self:start}
+    .cards>.card summary{min-height:228px}
+    .cards>.card[open] summary{min-height:228px;background:#f5f4f1}
+    .cards>.card[open]::after{background:linear-gradient(to bottom,#f5f4f1 0,#f5f4f1 228px,#fff 228px)}
+    .cards>.card .details{display:block;overflow:hidden;padding:30px 28px 32px;animation:none}
+    .cards>.card .details h4{font-size:clamp(25px,2.5vw,33px)}
+    .cards>.card .details>div+div{margin-top:30px}
+    .cards>.card .details .detail-group{margin-bottom:18px}
+    .cards>.card:hover{transform:translateY(-2px)}
+    .cards>.card[open]:hover{transform:none}
+    @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.cards{grid-template-columns:1fr}.cards>.card summary,.cards>.card[open] summary{min-height:195px}.cards>.card[open]::after{background:linear-gradient(to bottom,#f5f4f1 0,#f5f4f1 195px,#fff 195px)}.cards>.card .details{padding:25px}}
+
+    /* Selected Work: tab-like cards with a shared, full-width story reveal. */
+    .cards>.card{min-width:0}
+    .cards>.card .details{display:none}
+    .cards>.card.is-active{border-color:#a9a39a;box-shadow:0 10px 28px rgba(30,28,24,.055);transform:none}
+    .cards>.card.is-active summary{background:#f8f7f4}
+    .cards>.card.is-active::after{background:#f8f7f4}
+    .cards>.card.is-active .plus{transform:rotate(45deg);background:var(--ink);color:white;border-color:var(--ink)}
+    .cards>.card.is-active:hover .plus{transform:rotate(45deg)}
+    .work-story-panel{grid-column:1/-1;display:grid;grid-template-rows:0fr;opacity:0;overflow:hidden;border:0 solid transparent;border-radius:22px;background:#fff;box-shadow:0 20px 50px rgba(30,28,24,.045);transition:grid-template-rows .52s cubic-bezier(.22,1,.36,1),opacity .34s ease,border-width .52s ease;min-width:0}
+    .work-story-panel.is-open{grid-template-rows:1fr;opacity:1;border-width:1px;border-color:var(--line)}
+    .work-story-clip{min-height:0;overflow:hidden}
+    .work-story-inner{padding:0 38px;transition:padding .52s cubic-bezier(.22,1,.36,1)}
+    .work-story-panel.is-open .work-story-inner{padding:35px 38px 42px}
+    .work-story-head{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px}
+    .work-story-head .detail-label{display:block;margin-bottom:5px}
+    .work-story-heading{font-size:14px;font-weight:600;letter-spacing:-.015em}
+    .story-close{border:1px solid var(--line);border-radius:99px;padding:9px 15px;background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
+    .story-close:hover{background:var(--ink);color:white}
+    .work-story-panel .details{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;padding:0;border:0;background:transparent;animation:none}
+    .work-story-panel .details h4{font-size:clamp(28px,3vw,42px)}
+    .work-story-panel .details>div+div{margin-top:0}
+    @media(max-width:600px){.work-story-panel .details{grid-template-columns:1fr;gap:18px}.work-story-inner{padding:0 22px}.work-story-panel.is-open .work-story-inner{padding:24px 22px 30px}.work-story-head{margin-bottom:15px}}
+    @media(prefers-reduced-motion:reduce){.work-story-panel,.work-story-inner{transition:none!important}}
+
+    /* Section 02 uses the same tab-card and full-width reveal as Selected Work. */
+    .approach-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:18px}
+    .approach-grid>.principle{min-width:0;align-self:stretch;grid-column:auto;isolation:isolate}
+    .approach-grid>.principle summary{min-height:330px;height:100%;padding:28px}
+    .approach-grid>.principle .principle-story{display:none}
+    .approach-grid>.principle.is-active{border-color:#a9a39a;box-shadow:0 10px 28px rgba(30,28,24,.055);transform:none}
+    .approach-grid>.principle.is-active summary{background:#f8f7f4}
+    .approach-grid>.principle.is-active .principle-plus{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(45deg)}
+    .approach-grid>.principle.is-active .label-closed{display:none}
+    .approach-grid>.principle.is-active .label-open{display:inline}
+    .approach-grid>.principle.is-active:hover .principle-plus{transform:rotate(45deg)}
+    .approach-story-panel{grid-column:1/-1}
+    .approach-story-panel .principle-story{display:grid;grid-template-columns:1fr 1fr;gap:54px;border:0;padding:0;animation:none}
+    @media(max-width:850px){.approach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.approach-grid{grid-template-columns:1fr}.approach-grid>.principle summary{min-height:280px;height:100%;padding:25px}.approach-story-panel .principle-story{grid-template-columns:1fr;gap:24px}}
+    @media(prefers-reduced-motion:reduce){.approach-grid>.principle{transition:none!important}}
   </style>
 </head>
 <body>
@@ -141,21 +197,110 @@
         },250);
       },1800);
     }
-    const strengths=document.querySelectorAll('.principle');
-    strengths.forEach(strength=>strength.addEventListener('toggle',()=>{
-      if(strength.open)strengths.forEach(other=>{if(other!==strength)other.open=false});
-    }));
-    const cards=document.querySelectorAll('.card');
+    const workGrid=document.querySelector('.cards');
+    const cards=[...workGrid.querySelectorAll(':scope > .card')];
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+    const storyPanel=document.createElement('section');
+    storyPanel.className='work-story-panel';
+    storyPanel.setAttribute('aria-label','Selected project story');
+    storyPanel.innerHTML='<div class="work-story-clip"><div class="work-story-inner"><div class="work-story-head"><div><span class="detail-label">PROJECT STORY</span><span class="work-story-heading"></span></div><button class="story-close" type="button">Close ×</button></div><div class="work-story-content"></div></div></div>';
+    let activeCard=null;
+    let closeTimer=null;
+    const closeButton=storyPanel.querySelector('.story-close');
+
+    function closeStory(){
+      clearTimeout(closeTimer);
+      if(activeCard){
+        activeCard.classList.remove('is-active');
+        activeCard.querySelector('summary').setAttribute('aria-expanded','false');
+      }
+      activeCard=null;
+      storyPanel.classList.remove('is-open');
+      closeTimer=setTimeout(()=>{if(!activeCard)storyPanel.remove();},reduceMotion.matches?0:550);
+    }
+
+    function showStory(card){
+      if(activeCard===card){closeStory();return;}
+      clearTimeout(closeTimer);
+      if(activeCard){
+        activeCard.classList.remove('is-active');
+        activeCard.querySelector('summary').setAttribute('aria-expanded','false');
+      }
+      activeCard=card;
+      card.classList.add('is-active');
+      card.querySelector('summary').setAttribute('aria-expanded','true');
+      storyPanel.querySelector('.work-story-heading').textContent=card.querySelector('h3').textContent;
+      storyPanel.querySelector('.work-story-content').replaceChildren(card.querySelector('.details').cloneNode(true));
+
+      // Insert after the full row, so the next row of cards slides downward.
+      const rowTop=card.offsetTop;
+      const rowCards=cards.filter(item=>Math.abs(item.offsetTop-rowTop)<5);
+      const lastInRow=rowCards[rowCards.length-1];
+      lastInRow.after(storyPanel);
+      requestAnimationFrame(()=>storyPanel.classList.add('is-open'));
+    }
+
+    closeButton.addEventListener('click',closeStory);
     cards.forEach(card=>{
+      const summary=card.querySelector('summary');
+      summary.setAttribute('aria-expanded','false');
       card.addEventListener('pointermove',e=>{
         if(e.pointerType==='touch')return;
         const r=card.getBoundingClientRect();
         card.style.setProperty('--mx',`${e.clientX-r.left}px`);
         card.style.setProperty('--my',`${e.clientY-r.top}px`);
       });
-      card.addEventListener('toggle',()=>{
-        if(card.open)cards.forEach(other=>{if(other!==card)other.open=false});
+      summary.addEventListener('click',e=>{
+        e.preventDefault();
+        showStory(card);
       });
+    });
+
+    // Match the Selected Work interaction: static cards, shared expanding story below the row.
+    const approachGrid=document.querySelector('.approach-grid');
+    const strengths=[...approachGrid.querySelectorAll(':scope > .principle')];
+    const approachPanel=document.createElement('section');
+    approachPanel.className='work-story-panel approach-story-panel';
+    approachPanel.setAttribute('aria-label','Leadership story');
+    approachPanel.innerHTML='<div class="work-story-clip"><div class="work-story-inner"><div class="work-story-head"><div><span class="detail-label">WHAT SETS ME APART</span><span class="work-story-heading"></span></div><button class="story-close" type="button">Close ×</button></div><div class="work-story-content"></div></div></div>';
+    let activeStrength=null;
+    let approachCloseTimer=null;
+    function closeApproachStory(){
+      clearTimeout(approachCloseTimer);
+      if(activeStrength){activeStrength.classList.remove('is-active');activeStrength.querySelector('summary').setAttribute('aria-expanded','false');}
+      activeStrength=null;
+      approachPanel.classList.remove('is-open');
+      approachCloseTimer=setTimeout(()=>{if(!activeStrength)approachPanel.remove();},reduceMotion.matches?0:550);
+    }
+    function positionApproachPanel(strength){
+      const rowCards=strengths.filter(item=>Math.abs(item.offsetTop-strength.offsetTop)<5);
+      rowCards[rowCards.length-1].after(approachPanel);
+    }
+    function showApproachStory(strength){
+      if(activeStrength===strength){closeApproachStory();return;}
+      clearTimeout(approachCloseTimer);
+      if(activeStrength){activeStrength.classList.remove('is-active');activeStrength.querySelector('summary').setAttribute('aria-expanded','false');}
+      activeStrength=strength;
+      strength.classList.add('is-active');
+      strength.querySelector('summary').setAttribute('aria-expanded','true');
+      approachPanel.querySelector('.work-story-heading').textContent=strength.querySelector('.principle-title').textContent;
+      approachPanel.querySelector('.work-story-content').replaceChildren(strength.querySelector('.principle-story').cloneNode(true));
+      positionApproachPanel(strength);
+      requestAnimationFrame(()=>approachPanel.classList.add('is-open'));
+    }
+    approachPanel.querySelector('.story-close').addEventListener('click',closeApproachStory);
+    strengths.forEach(strength=>{
+      const summary=strength.querySelector('summary');
+      summary.setAttribute('aria-expanded','false');
+      summary.addEventListener('click',event=>{event.preventDefault();showApproachStory(strength);});
+    });
+    window.addEventListener('resize',()=>{if(activeStrength)positionApproachPanel(activeStrength);});
+    window.addEventListener('resize',()=>{
+      if(activeCard){
+        const current=activeCard;
+        const rowCards=cards.filter(item=>Math.abs(item.offsetTop-current.offsetTop)<5);
+        rowCards[rowCards.length-1].after(storyPanel);
+      }
     });
   </script>
 </body>
