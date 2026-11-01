@@ -12,7 +12,7 @@
     .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:650;color:#85817c}.serif{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;letter-spacing:-.055em}.hero{text-align:center;padding:105px 0 130px}.hero h1{max-width:890px;margin:20px auto 24px;font-size:clamp(43px,7vw,88px);letter-spacing:-.075em;line-height:1.05;font-weight:500}.hero p{max-width:580px;margin:0 auto 29px;color:var(--muted);font-size:16px;line-height:1.8}.metrics{display:flex;justify-content:center;gap:54px;margin-top:86px}.metric strong{display:block;font-size:27px;font-weight:550;letter-spacing:-.05em}.metric span{font-size:12px;color:var(--muted)}
     .hero-rotating{display:block;position:relative;min-height:1.2em;margin-top:.05em}
     .hero-static{display:block}
-    .hero-rotating .serif{display:inline-block;transition:opacity .36s ease,transform .36s ease;opacity:1;transform:translateY(0)}
+    .hero-rotating .serif{display:inline-block;transition:opacity .24s ease,transform .24s ease;opacity:1;transform:translateY(0)}
     .hero-rotating .serif.is-leaving{opacity:0;transform:translateY(-12px)}
     .hero-rotating .serif.is-entering{opacity:0;transform:translateY(12px)}
     @media(prefers-reduced-motion:reduce){.hero-rotating .serif{transition:none!important}}
@@ -23,6 +23,45 @@
     @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.card:nth-child(n+4){grid-column:span 1}.card[open]{grid-column:1/-1}.details{gap:25px}.nav{gap:14px}.hero{padding:80px 0 90px}.metrics{gap:24px}}
     @media(max-width:600px){header{height:70px}.nav{gap:15px}.nav a{font-size:12px}.nav .nav-approach{display:none}.hero{padding:65px 0 80px}.hero p{font-size:14px}.metrics{gap:18px;flex-wrap:wrap;margin-top:55px}.metric{min-width:85px}.metric strong{font-size:23px}.metric span{font-size:10px}.work,.approach{padding:75px 0}.cards{grid-template-columns:1fr}.card,.card:nth-child(n+4),.card[open]{grid-column:1}.card summary{min-height:195px;padding:26px}.details{padding:25px;grid-template-columns:1fr;gap:14px}.approach-grid{grid-template-columns:1fr}.principle{padding:20px 25px}.section-heading{margin-bottom:35px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+    /* Expandable strengths — Section 02 */
+    .approach-intro{max-width:540px;margin:24px 0 0;color:var(--muted);font-size:15px;line-height:1.8}
+    .approach-grid{align-items:start}
+    .principle{padding:0;border:1px solid var(--line);border-radius:22px;background:#fff;overflow:hidden;transition:border-color .28s,box-shadow .28s,transform .28s}
+    .principle:hover{transform:translateY(-3px);border-color:#cbc7c0;box-shadow:0 16px 38px rgba(25,25,25,.045)}
+    .principle[open]{grid-column:1/-1;transform:none;box-shadow:0 18px 50px rgba(25,25,25,.05)}
+    .principle summary{cursor:pointer;list-style:none;padding:28px;min-height:330px;display:flex;flex-direction:column;outline-offset:-4px}
+    .principle summary::-webkit-details-marker{display:none}
+    .principle summary:focus-visible{outline:2px solid #817c73;border-radius:20px}
+    .principle-top{display:flex;justify-content:space-between;align-items:center}
+    .principle .index{margin:0}
+    .principle-plus{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid #e3e0db;border-radius:50%;background:#fff;color:#726e68;font-size:21px;font-weight:300;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s,color .25s,border-color .25s}
+    .principle:hover .principle-plus,.principle summary:focus-visible .principle-plus{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(90deg)}
+    .principle[open] .principle-plus{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(45deg)}
+    .principle-main{display:block;flex:1;padding-top:38px}
+    .principle-kicker{display:block;color:#98948e;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:13px}
+    .principle-title{display:block;font-size:clamp(21px,2.2vw,27px);line-height:1.2;letter-spacing:-.05em;font-weight:550;margin:0 0 14px}
+    .principle-description{display:block;color:var(--muted);font-size:13px;line-height:1.78;max-width:390px}
+    .principle-link{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.015em;color:#5d5953;padding-top:24px}
+    .principle-link>span:last-child{font-size:16px;transition:transform .25s}
+    .principle:hover .principle-link>span:last-child{transform:translate(2px,-2px)}
+    .principle-link .label-open{display:none}
+    .principle[open] .principle-link .label-open{display:inline}
+    .principle[open] .principle-link .label-closed{display:none}
+    .principle[open] summary{min-height:0;background:#f6f5f2;padding:26px 32px 30px}
+    .principle[open] .principle-main{padding-top:22px}
+    .principle[open] .principle-description{max-width:840px}
+    .principle[open] .principle-link{padding-top:18px}
+    .principle-story{display:grid;grid-template-columns:1fr 1fr;gap:54px;border-top:1px solid var(--line);padding:42px 36px 46px;animation:appear .3s ease-out}
+    .story-lead h4{font-size:clamp(29px,3.5vw,44px);font-weight:500;line-height:1.15;letter-spacing:-.06em;margin:16px 0}
+    .story-lead h4 em{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+    .story-lead p,.story-placeholder p{font-size:14px;color:#77746f;line-height:1.8;max-width:490px}
+    .story-placeholder{background:#faf9f6;border:1px dashed #d7d2ca;border-radius:17px;padding:26px 28px}
+    .story-placeholder-heading{font-size:21px!important;letter-spacing:-.035em;color:var(--ink)!important;margin:18px 0 6px}
+    .story-prompts{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+    .story-prompts span{font-size:11px;color:#68645e;background:#fff;border:1px solid #ebe8e2;border-radius:100px;padding:9px 12px}
+    @media(max-width:850px){.approach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.principle[open]{grid-column:1/-1}.principle-story{gap:25px}}
+    @media(max-width:600px){.approach-grid{grid-template-columns:1fr}.principle,.principle[open]{grid-column:1}.principle summary{min-height:0;padding:25px}.principle-main{padding-top:25px}.principle[open] summary{padding:25px}.principle-story{grid-template-columns:1fr;padding:27px 24px;gap:25px}.story-placeholder{padding:22px}.approach-intro{font-size:14px}}
   </style>
 </head>
 <body>
@@ -44,7 +83,44 @@
         <details class="card"><summary><div class="card-top"><span class="card-number">05 /</span><span class="plus" aria-hidden="true">+</span></div><div><h3>Data & AI Governance</h3><p class="brief">Responsible AI, intelligent intake, and traceability.</p></div></summary><div class="details"><div><span class="detail-label">Selected project</span><h4>Enterprise AI Intake & Governance Automation</h4><p>Established enterprise AI governance frameworks and security controls. Built an AI intake and prioritization web application using Azure AI Foundry and Azure OpenAI to assess business impact, technical feasibility, and AI risks. Also developed an agentic workflow for AI request intake, registration, and assignment.</p></div><div><div class="detail-group"><span class="detail-label">My contribution</span><p>AI governance, architecture roadmaps, risk and feasibility evaluation, and workflow automation. Separately, automated Data Lake cataloging, classification, and monitoring using Microsoft Purview APIs.</p></div><span class="detail-label">Technologies</span><div class="tags"><span class="tag">Azure AI Foundry</span><span class="tag">Azure OpenAI</span><span class="tag">AI Agents</span><span class="tag">Microsoft Purview</span></div></div></div></details>
       </div>
     </div></section>
-    <section class="approach wrap" id="approach"><div class="approach-head"><div class="eyebrow">02 / MY APPROACH</div><h2>Technology is the tool.<br><span class="serif">Outcomes are the point.</span></h2></div><div class="approach-grid"><div class="principle"><div class="index">01 /</div><h3>Understand deeply</h3><p>Start with context, business needs, constraints, and a clear definition of value.</p></div><div class="principle"><div class="index">02 /</div><h3>Design deliberately</h3><p>Balance architecture, security, governance, scalability, and long-term maintainability.</p></div><div class="principle"><div class="index">03 /</div><h3>Deliver together</h3><p>Connect stakeholders and engineers, resolve dependencies, and move solutions toward production.</p></div></div></section>
+    <section class="approach wrap" id="approach" aria-labelledby="approach-title">
+      <div class="approach-head"><div class="eyebrow">02 / WHAT SETS ME APART</div><h2 id="approach-title">Technical depth.<br><span class="serif">Leadership beyond technology.</span></h2><p class="approach-intro">The way I work matters as much as what I build. Explore the strengths behind my approach.</p></div>
+      <div class="approach-grid">
+        <details class="principle">
+          <summary>
+            <span class="principle-top"><span class="index">01 /</span><span class="principle-plus" aria-hidden="true">+</span></span>
+            <span class="principle-main"><span class="principle-kicker">Cross-functional leadership</span><span class="principle-title">Connect People. Drive Delivery.</span><span class="principle-description">I bring teams, stakeholders, and priorities together to turn complex ideas into results. I see the bigger picture, navigate dependencies, resolve challenges, and keep initiatives moving from planning through execution.</span></span>
+            <span class="principle-link"><span class="label-closed">Explore the story</span><span class="label-open">Close the story</span><span aria-hidden="true">↗</span></span>
+          </summary>
+          <div class="principle-story">
+            <div class="story-lead"><span class="detail-label">BEHIND THE APPROACH</span><h4>A story worth <em>telling.</em></h4><p>Tell the story of a time you aligned stakeholders across teams, handled competing priorities, or navigated a major delivery challenge.</p></div>
+            <div class="story-placeholder"><span class="detail-label">YOUR STORY / COMING SOON</span><p class="story-placeholder-heading">Space for a real example.</p><p>Replace this placeholder with a short story in your own words. A great example can cover:</p><div class="story-prompts"><span>Situation &amp; stakeholders</span><span>Your role &amp; decisions</span><span>Outcome &amp; impact</span></div></div>
+          </div>
+        </details>
+        <details class="principle">
+          <summary>
+            <span class="principle-top"><span class="index">02 /</span><span class="principle-plus" aria-hidden="true">+</span></span>
+            <span class="principle-main"><span class="principle-kicker">Technical storytelling</span><span class="principle-title">Make Complexity Clear.</span><span class="principle-description">I bridge technical architecture and business strategy through clear communication and storytelling. I translate complex ideas into actionable roadmaps, build stakeholder confidence, and help teams align on the right solutions.</span></span>
+            <span class="principle-link"><span class="label-closed">Explore the story</span><span class="label-open">Close the story</span><span aria-hidden="true">↗</span></span>
+          </summary>
+          <div class="principle-story">
+            <div class="story-lead"><span class="detail-label">BEHIND THE APPROACH</span><h4>A story worth <em>telling.</em></h4><p>Tell the story of how you explained a complex architecture, won support for a technical roadmap, or helped a team make an important decision.</p></div>
+            <div class="story-placeholder"><span class="detail-label">YOUR STORY / COMING SOON</span><p class="story-placeholder-heading">Space for a real example.</p><p>Replace this placeholder with a short story in your own words. A great example can cover:</p><div class="story-prompts"><span>Problem &amp; audience</span><span>How you communicated</span><span>Decision &amp; impact</span></div></div>
+          </div>
+        </details>
+        <details class="principle">
+          <summary>
+            <span class="principle-top"><span class="index">03 /</span><span class="principle-plus" aria-hidden="true">+</span></span>
+            <span class="principle-main"><span class="principle-kicker">Adaptability &amp; problem solving</span><span class="principle-title">Navigate the Unknown. Solve What Matters.</span><span class="principle-description">I thrive on new challenges. From cloud platforms to AI engineering and governance, I quickly adapt, solve unfamiliar problems, and turn ambiguity into technical strategies and successful delivery.</span></span>
+            <span class="principle-link"><span class="label-closed">Explore the story</span><span class="label-open">Close the story</span><span aria-hidden="true">↗</span></span>
+          </summary>
+          <div class="principle-story">
+            <div class="story-lead"><span class="detail-label">BEHIND THE APPROACH</span><h4>A story worth <em>telling.</em></h4><p>Tell the story of entering a new technology area, solving an ambiguous problem, and creating a roadmap that turned an unfamiliar challenge into delivery.</p></div>
+            <div class="story-placeholder"><span class="detail-label">YOUR STORY / COMING SOON</span><p class="story-placeholder-heading">Space for a real example.</p><p>Replace this placeholder with a short story in your own words. A great example can cover:</p><div class="story-prompts"><span>The unknown challenge</span><span>How you approached it</span><span>What changed</span></div></div>
+          </div>
+        </details>
+      </div>
+    </section>
     <section class="contact" id="contact"><div class="eyebrow">03 / CONNECT</div><a class="pill" href="https://www.linkedin.com/in/YOUR-PROFILE/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a></section>
   </main>
   <footer class="footer">© <span id="year">2026</span> Your Name</footer>
@@ -62,9 +138,13 @@
           rotatingText.classList.remove('is-leaving');
           rotatingText.classList.add('is-entering');
           requestAnimationFrame(()=>requestAnimationFrame(()=>rotatingText.classList.remove('is-entering')));
-        },370);
-      },3300);
+        },250);
+      },1800);
     }
+    const strengths=document.querySelectorAll('.principle');
+    strengths.forEach(strength=>strength.addEventListener('toggle',()=>{
+      if(strength.open)strengths.forEach(other=>{if(other!==strength)other.open=false});
+    }));
     const cards=document.querySelectorAll('.card');
     cards.forEach(card=>{
       card.addEventListener('pointermove',e=>{
