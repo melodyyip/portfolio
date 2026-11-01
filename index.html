@@ -202,6 +202,38 @@
     .approach-grid > .principle[open] summary { background:var(--white); }
     .cards > .card.is-active::after,
     .cards > .card[open]::after { background:var(--white); }
+
+    /* Typography alignment: Section 02 follows Selected Work (Section 01). */
+    .approach-grid > .principle summary{padding:29px 30px;}
+    .approach-grid .principle .index{
+      font:650 11px/1 Arial,Helvetica,sans-serif;
+      letter-spacing:.16em;
+      color:var(--accent);
+    }
+    .approach-grid .principle-title{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:clamp(22px,2.5vw,31px);
+      font-weight:500;
+      letter-spacing:-.055em;
+      line-height:1.14;
+      margin:0 0 11px;
+    }
+    .approach-grid .principle-description{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:13px;
+      font-weight:400;
+      line-height:1.65;
+      color:var(--muted);
+    }
+    .approach-grid .principle-kicker{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:10px;
+      font-weight:650;
+      letter-spacing:.16em;
+    }
+    @media(max-width:600px){
+      .approach-grid > .principle summary{padding:26px;}
+    }
   </style>
 </head>
 <body>
